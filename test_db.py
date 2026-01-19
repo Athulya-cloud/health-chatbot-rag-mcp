@@ -1,5 +1,5 @@
 import mysql.connector
-from secrets import DB_CONFIG
+from my_secrets import DB_CONFIG
 
 print("🔌 Attempting to connect to TiDB Cloud...")
 

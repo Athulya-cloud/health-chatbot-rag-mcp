@@ -1,28 +1,30 @@
+import time
 from google import genai
-from secrets import GOOGLE_KEY
+from my_secrets import GOOGLE_KEY
 
-print("🧠 Testing Google Gemini API...")
+print("🧠 Testing Verified Google Gemini Models...")
 
 try:
     client = genai.Client(api_key=GOOGLE_KEY)
     
-    # FIX: Changed model name to a more generic stable version
-    print("Test 1: Asking Gemini to say hello...")
+    # Using the EXACT string from your list_models output
+    print("Test 1: Asking Gemini Flash Latest...")
     response = client.models.generate_content(
-        model="gemini-2.0-flash-exp", # Try the experimental flash if 1.5 fails, or just "gemini-1.5-flash-002"
-        contents="Say 'Hello Doctor' if you can hear me."
+        model="models/gemini-flash-latest", 
+        contents="Say 'Hello Doctor, the brain is online' if you can hear me."
     )
     print(f"🤖 Answer: {response.text}")
     
-    print("Test 2: Creating a vector...")
+    time.sleep(2) # Avoid rate limits
+
+    print("Test 2: Creating a vector with Embedding 004...")
     vec_resp = client.models.embed_content(
-        model="text-embedding-004",
-        contents="Medical Record"
+        model="models/text-embedding-004",
+        contents="Patient history includes hypertension and type 2 diabetes."
     )
-    vector = vec_resp.embeddings[0].values
     
-    if len(vector) > 0:
-        print(f"✅ SUCCESS! Received a vector with {len(vector)} dimensions.")
+    vector = vec_resp.embeddings[0].values
+    print(f"✅ SUCCESS! Received a vector with {len(vector)} dimensions.")
 
 except Exception as e:
     print(f"❌ ERROR: {e}")
