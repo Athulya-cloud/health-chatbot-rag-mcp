@@ -1,17 +1,18 @@
-# EMR Patient Summary Chatbot
+<h1 align="center">EMR Patient Summary Chatbot</h1>
+<p align="center"><b>Ask your patient records anything.</b></p>
 
-Ask a question in plain English and get an answer from patient records, or from general medical knowledge when no patient matches. A learning prototype that shows how retrieval-augmented generation (RAG) works end to end.
+<p align="center"><img src="assets/architecture.png" alt="How the chatbot works" width="760"></p>
 
-![architecture](assets/architecture.png)
-
-## What it does
-
-- **Patient questions:** finds the most relevant patient records by meaning, then answers using only those records
-- **General questions:** falls back to general medical knowledge when nothing matches
-- **Shows its sources:** each matching record is listed with its match score
-- **Strict answers:** temperature 0.0 so replies stay consistent
+Skip the scrolling through spreadsheets. Type a question like "which patients have diabetes?" and get a plain-English answer built from the matching records. Ask something general instead and it answers from medical knowledge. A hands-on demo of retrieval-augmented generation (RAG) from start to finish.
 
 > **Prototype for learning only.** Uses mock data (100 sample patients). Not for real medical use and not medical advice.
+
+## Why it's interesting
+
+- **Finds records by meaning,** not exact keywords
+- **Knows when to look it up:** patient questions use your records, general ones use medical knowledge
+- **Shows its sources:** every matching record is listed with a match score
+- **Consistent answers:** temperature 0.0, so replies stay strict and repeatable
 
 ## How it works
 
